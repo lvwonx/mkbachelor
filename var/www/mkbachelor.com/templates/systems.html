@@ -1,0 +1,175 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Sistēmu pārvaldība</h1>
+
+<div class="card">
+
+    <h3 id="formTitle">Pievienot sistēmu</h3>
+
+    <form id="systemForm">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Nosaukums"
+            required
+        >
+
+        <textarea
+            id="description"
+            placeholder="Apraksts"
+        ></textarea>
+
+        <select id="owner" required>
+            <option value="">
+                -- Izvēlēties atbildīgo personu --
+            </option>
+        </select>
+
+        <div class="form-row">
+
+            <select id="cia_confidentiality" required>
+                <option value="" disabled selected hidden>
+                    Konfidencialitāte
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <select id="cia_integrity" required>
+                <option value="" disabled selected hidden>
+                    Integritāte
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <select id="cia_availability" required>
+                <option value="" disabled selected hidden>
+                    Pieejamība
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+        </div>
+
+        <div class="form-row">
+
+            <button
+                type="submit"
+                id="submitBtn"
+            >
+                Pievienot
+            </button>
+
+            <button
+                type="button"
+                id="cancelBtn"
+                onclick="cancelEdit()"
+                style="display: none;"
+            >
+                Atcelt
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div class="card">
+
+    <h3>Sistēmu saraksts</h3>
+
+    <div class="list-controls">
+
+        <input
+            type="text"
+            id="systemSearch"
+            placeholder="Meklēt sistēmu..."
+        >
+
+        <div class="per-page-control" style="position:relative;top:-5px">
+
+            <span>Rādīt:</span>
+
+            <select id="systemPerPage">
+
+                <option value="5" selected>
+                    5
+                </option>
+
+                <option value="10">
+                    10
+                </option>
+
+                <option value="20">
+                    20
+                </option>
+
+                <option value="50">
+                    50
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Nosaukums</th>
+                <th>Atbildīgais</th>
+                <th>Konfidencialitāte</th>
+                <th>Integritāte</th>
+                <th>Pieejamība</th>
+                <th>Klasifikācija</th>
+                <th>Drošības prasības</th>
+                <th>Darbības</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="systemsTable"></tbody>
+
+    </table>
+
+
+    <div class="list-footer">
+
+		<div
+			id="systemPaginationInfo"
+			class="pagination-info"
+		></div>
+
+		<div
+			id="systemPagination"
+			class="pagination"
+		></div>
+
+	</div>
+
+</div>
+
+<script src="/static/js/auth.js"></script>
+<script src="/static/js/systems.js"></script>
+
+{% endblock %}

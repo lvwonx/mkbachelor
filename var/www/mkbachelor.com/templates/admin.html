@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Administrēšanas panelis</h1>
+
+<div class="content">
+
+	<div class="card big" onclick="location.href='/admin/users'">
+		<h2>👥 Lietotāji</h2>
+		<p>Pārvaldīt lietotājus</p>
+	</div>
+	
+	<div class="card big" onclick="location.href='/admin/roles'">
+		<h2>👥 Lomas</h2>
+		<p>Lomu pārvaldība</p>
+	</div>
+
+	<div class="card big" onclick="location.href='/admin/system-status'">
+		<h2>🔐 Sistēmas statuss</h2>
+		<p>Sistēmas uzraudzība</p>
+	</div>
+	
+</div>
+
+{% endblock %}

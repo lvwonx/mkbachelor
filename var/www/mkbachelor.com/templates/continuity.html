@@ -1,0 +1,171 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Nepārtrauktības plāni</h1>
+
+<div class="card">
+
+    <h3 id="continuityFormTitle">Pievienot plānu</h3>
+
+    <form id="continuityForm">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Plāna nosaukums"
+            required
+        >
+
+        <textarea
+            id="description"
+            placeholder="Apraksts"
+        ></textarea>
+
+        <select id="system_id" required>
+            <option
+                value=""
+                disabled
+                selected
+                hidden
+            >
+                Sistēma
+            </option>
+        </select>
+
+        <div class="form-row">
+
+            <input
+                type="number"
+                id="rto"
+                placeholder="RTO (stundas)"
+                min="0"
+                required
+            >
+
+            <input
+                type="number"
+                id="rpo"
+                placeholder="RPO (stundas)"
+                min="0"
+                required
+            >
+
+            <input
+                type="number"
+                id="mtd"
+                placeholder="MTD (stundas)"
+                min="0"
+                required
+            >
+
+        </div>
+
+        <div class="form-row">
+
+            <button
+                type="submit"
+                id="submitBtn"
+            >
+                Pievienot
+            </button>
+
+            <button
+                type="button"
+                id="cancelBtn"
+                onclick="cancelEdit()"
+                style="display: none;"
+            >
+                Atcelt
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<div class="card">
+
+    <h3>Nepārtrauktības plānu saraksts</h3>
+
+    <div class="list-controls">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="continuitySearch"
+                placeholder="Meklēt plānu..."
+            >
+
+        </div>
+
+
+        <div class="per-page-box">
+
+            <label for="continuityPerPage">
+                Rādīt:
+            </label>
+
+            <select id="continuityPerPage">
+
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Plāns</th>
+                <th>Sistēma</th>
+                <th>RTO</th>
+                <th>RPO</th>
+                <th>MTD</th>
+                <th>Izveidoja</th>
+                <th>Izveidots</th>
+                <th>Darbības</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="continuityTable"></tbody>
+
+    </table>
+
+
+    <div class="list-footer">
+
+        <div
+            id="continuityPaginationInfo"
+            class="pagination-info"
+        >
+            Rādīti 0–0 no 0
+        </div>
+
+
+        <div
+            id="continuityPagination"
+            class="pagination"
+        ></div>
+
+    </div>
+
+</div>
+
+<script src="/static/js/auth.js"></script>
+<script src="/static/js/continuity.js"></script>
+
+{% endblock %}

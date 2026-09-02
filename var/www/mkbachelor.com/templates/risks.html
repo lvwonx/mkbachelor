@@ -1,0 +1,185 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Kiberrisku pārvaldība</h1>
+
+<div class="card">
+
+    <h3 id="riskFormTitle">Pievienot risku</h3>
+
+    <form id="riskForm">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Nosaukums"
+            required
+        >
+
+        <textarea
+            id="description"
+            placeholder="Apraksts"
+        ></textarea>
+
+        <input
+            type="number"
+            id="probability"
+            placeholder="Varbūtība (1-5)"
+            min="1"
+            max="5"
+            required
+        >
+
+        <input
+            type="number"
+            id="impact"
+            placeholder="Ietekme (1-5)"
+            min="1"
+            max="5"
+            required
+        >
+
+        <select id="system_id" required>
+            <option
+                value=""
+                disabled
+                selected
+                hidden
+            >
+                Sistēma
+            </option>
+        </select>
+
+        <div class="form-row">
+
+            <select id="status" required>
+
+                <option
+                    value=""
+                    disabled
+                    selected
+                    hidden
+                >
+                    Statuss
+                </option>
+
+                <option value="active">
+                    Aktīvs
+                </option>
+
+                <option value="mitigated">
+                    Samazināts
+                </option>
+
+                <option value="closed">
+                    Slēgts
+                </option>
+
+            </select>
+
+            <button
+                type="submit"
+                id="submitBtn"
+            >
+                Pievienot
+            </button>
+
+            <button
+                type="button"
+                id="cancelBtn"
+                onclick="cancelEdit()"
+                style="display: none;"
+            >
+                Atcelt
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<div class="card">
+
+    <h3>Risku saraksts</h3>
+
+	<div class="list-controls">
+
+		<div class="search-box">
+
+			<input
+				type="text"
+				id="riskSearch"
+				placeholder="Meklēt risku..."
+			>
+
+		</div>
+
+
+		<div class="per-page-box">
+
+			<label for="riskPerPage">
+				Rādīt:
+			</label>
+
+			<select id="riskPerPage">
+
+				<option value="5" selected>5</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+
+			</select>
+
+		</div>
+
+	</div>
+
+    <table class="risk-table">
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Nosaukums</th>
+				<th>Sistēma</th>
+                <th>Varbūtība</th>
+                <th>Ietekme</th>
+                <th>Riska līmenis</th>
+                <th>Statuss</th>
+                <th>Izveidoja</th>
+                <th>Izveidots</th>
+                <th>Darbības</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="riskTable"></tbody>
+
+    </table>
+	
+	<div class="list-footer">
+
+		<div
+			id="riskPaginationInfo"
+			class="pagination-info"
+		>
+			Rādīti 0–0 no 0
+		</div>
+
+
+		<div
+			id="riskPagination"
+			class="pagination"
+		></div>
+
+	</div>
+
+</div>
+
+
+<script src="/static/js/risks.js?v=2"></script>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Vadības panelis</h1>
+
+<div class="dashboard dashboard-page">
+
+    <div class="cards">
+
+        <div class="card big" onclick="location.href='/risks-page'">
+            <h2>Kiberriski</h2>
+            <p>Pārvaldīt un novērtēt riskus</p>
+        </div>
+
+        <div class="card big" onclick="location.href='/incidents-page'">
+            <h2>Incidenti</h2>
+            <p>Pārskatīt drošības incidentus</p>
+        </div>
+
+        <div class="card big" onclick="location.href='/systems-page'">
+            <h2>Sistēmas</h2>
+            <p>Pārvaldīt informācijas sistēmas</p>
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        <div class="chart-header">
+            <h2>Risku sadalījums</h2>
+            <p>Riski pēc riska līmeņa</p>
+        </div>
+
+        <div class="chart-wrapper">
+            <canvas id="riskChart"></canvas>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/static/js/main.js"></script>
+
+{% endblock %}

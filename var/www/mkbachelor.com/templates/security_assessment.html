@@ -1,0 +1,223 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Informācijas drošības pašnovērtējums</h1>
+
+<div class="card">
+
+    <h3>Veikt pašnovērtējumu</h3>
+
+    <form id="assessmentForm">
+
+        <label for="risk_management">
+            Risku pārvaldība
+        </label>
+
+        <select id="risk_management" required>
+            <option value="" disabled selected hidden>
+                Novērtējums
+            </option>
+            <option value="1">1 - Ļoti zems</option>
+            <option value="2">2 - Zems</option>
+            <option value="3">3 - Vidējs</option>
+            <option value="4">4 - Labs</option>
+            <option value="5">5 - Ļoti labs</option>
+        </select>
+
+
+        <label for="incident_management">
+            Incidentu pārvaldība
+        </label>
+
+        <select id="incident_management" required>
+            <option value="" disabled selected hidden>
+                Novērtējums
+            </option>
+            <option value="1">1 - Ļoti zems</option>
+            <option value="2">2 - Zems</option>
+            <option value="3">3 - Vidējs</option>
+            <option value="4">4 - Labs</option>
+            <option value="5">5 - Ļoti labs</option>
+        </select>
+
+
+        <label for="access_control">
+            Piekļuves kontrole
+        </label>
+
+        <select id="access_control" required>
+            <option value="" disabled selected hidden>
+                Novērtējums
+            </option>
+            <option value="1">1 - Ļoti zems</option>
+            <option value="2">2 - Zems</option>
+            <option value="3">3 - Vidējs</option>
+            <option value="4">4 - Labs</option>
+            <option value="5">5 - Ļoti labs</option>
+        </select>
+
+
+        <label for="system_protection">
+            Sistēmu aizsardzība
+        </label>
+
+        <select id="system_protection" required>
+            <option value="" disabled selected hidden>
+                Novērtējums
+            </option>
+            <option value="1">1 - Ļoti zems</option>
+            <option value="2">2 - Zems</option>
+            <option value="3">3 - Vidējs</option>
+            <option value="4">4 - Labs</option>
+            <option value="5">5 - Ļoti labs</option>
+        </select>
+
+
+        <label for="continuity">
+            Darbības nepārtrauktība
+        </label>
+
+        <select id="continuity" required>
+            <option value="" disabled selected hidden>
+                Novērtējums
+            </option>
+            <option value="1">1 - Ļoti zems</option>
+            <option value="2">2 - Zems</option>
+            <option value="3">3 - Vidējs</option>
+            <option value="4">4 - Labs</option>
+            <option value="5">5 - Ļoti labs</option>
+        </select>
+
+
+        <div class="form-row">
+
+            <button
+                type="submit"
+                id="assessmentSubmitBtn"
+            >
+                Saglabāt pašnovērtējumu
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<div class="card">
+
+    <h3>Pašnovērtējumu vēsture</h3>
+
+	<div class="assessment-list-controls">
+
+		<div class="assessment-search">
+
+			<input
+				type="text"
+				id="assessmentSearch"
+				placeholder="Meklēt..."
+			>
+
+			<select id="assessmentSecurityLevel">
+
+				<option value="">
+					Visi līmeņi
+				</option>
+
+				<option value="Zems">
+					Zems
+				</option>
+
+				<option value="Vidējs">
+					Vidējs
+				</option>
+
+				<option value="Labs">
+					Labs
+				</option>
+
+				<option value="Augsts">
+					Augsts
+				</option>
+
+			</select>
+
+		</div>
+
+
+		<div class="assessment-per-page">
+
+			<span>
+				Rādīt:
+			</span>
+
+			<select id="assessmentPerPage">
+
+				<option value="5" selected>
+					5
+				</option>
+
+				<option value="10">
+					10
+				</option>
+
+				<option value="20">
+					20
+				</option>
+
+				<option value="50">
+					50
+				</option>
+
+			</select>
+
+			<span>
+				objektus
+			</span>
+
+		</div>
+
+	</div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Datums</th>
+                <th>Kopējais vērtējums</th>
+                <th>Drošības līmenis</th>
+                <th>Sistēmas</th>
+                <th>Riski</th>
+                <th>Aktīvie riski</th>
+                <th>Incidenti</th>
+                <th>Neatrisinātie incidenti</th>
+                <th>Nepārtrauktības plāni</th>
+                <th>Izveidoja</th>
+				<th>Darbības</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="assessmentTable"></tbody>
+		
+		<div
+			id="assessmentPaginationInfo"
+			class="assessment-pagination-info"
+		></div>
+
+		<div
+			id="assessmentPagination"
+			class="assessment-pagination"
+		></div>
+
+    </table>
+
+</div>
+
+
+<script src="/static/js/security_assessment.js?v=2"></script>
+
+{% endblock %}

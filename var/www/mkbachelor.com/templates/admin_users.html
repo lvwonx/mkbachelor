@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content">
+    <h1>Lietotāji</h1>
+
+	<div class="card">
+		<h3>Pievienot lietotāju</h3>
+
+		<input id="username" placeholder="Username">
+		<input id="password" type="password" placeholder="Password">
+
+		<select id="role"></select>
+
+		<button onclick="createUser()">Pievienot</button>
+	</div>
+
+    <div class="card">
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Lietotājvārds</th>
+                    <th>Loma</th>
+                    <th>Izveidots</th>
+					<th>Darbības</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="/static/js/admin_users.js"></script>
+{% endblock %}

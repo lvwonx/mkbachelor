@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content">
+    <h1>Lomas</h1>
+
+    <div class="card">
+        <h3>Izvēlēties lomu</h3>
+
+        <select id="roleSelect"></select>
+    </div>
+
+    <div class="card">
+        <h3>Tiesības</h3>
+
+        <div id="permissions"></div>
+
+        <button onclick="save()">Saglabāt</button>
+    </div>
+</div>
+
+<script src="/static/js/admin_roles.js"></script>
+{% endblock %}

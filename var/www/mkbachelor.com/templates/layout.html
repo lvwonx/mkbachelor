@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Kiberdrošības risku pārvaldības rīks</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css?v=123"
+    >
+
+    <link
+        rel="icon"
+        href="/static/favicon.ico"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/static/js/auth.js"></script>
+
+</head>
+
+<body>
+
+<div class="app">
+    <div class="sidebar">
+        <h2>Kiberdrošības risku pārvaldības rīks</h2>
+
+        <a href="/">Panelis</a>
+        <a href="/risks-page">Riski</a>
+        <a href="/incidents-page">Incidenti</a>
+        <a href="/systems-page">Sistēmas</a>
+		<a href="/continuity-page">Nepārtrauktība</a>
+		<a href="/security-assessment-page">Pašnovērtējums</a>
+		<a href="/reports-page">Atskaites</a>
+        <a href="/logout" class="logout">Iziet</a>
+    </div>
+
+    <div class="main">
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+
+                Sveicināts,
+                <span
+                    id="usernameDisplay"
+                    style="margin-left:3px;"
+                ></span>!
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <a
+                    id="adminMenu"
+                    href="/admin-page"
+                    class="admin-btn"
+                >
+                    Admin
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="content">
+
+            {% block content %}{% endblock %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    id="descriptionModal"
+    class="description-modal"
+>
+
+    <div class="description-modal-content">
+
+        <div class="description-modal-header">
+
+            <h3 id="descriptionModalTitle"></h3>
+
+            <button
+                type="button"
+                class="description-modal-close"
+                onclick="closeDescriptionModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="description-modal-body">
+
+            <p id="descriptionModalText"></p>
+
+        </div>
+
+
+        <div class="description-modal-footer">
+
+            <button
+                type="button"
+                class="description-modal-button"
+                onclick="closeDescriptionModal()"
+            >
+                Aizvērt
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    id="historyModal"
+    class="description-modal"
+    style="display: none;"
+>
+    <div class="description-modal-content">
+
+        <div class="description-modal-header">
+
+            <h3 id="historyModalTitle"></h3>
+
+            <button
+                type="button"
+                class="description-modal-close"
+                onclick="closeHistoryModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            class="description-modal-body"
+            id="historyModalBody"
+        ></div>
+
+        <div class="description-modal-footer">
+
+            <button
+                type="button"
+                class="description-modal-button"
+                onclick="closeHistoryModal()"
+            >
+                Aizvērt
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>

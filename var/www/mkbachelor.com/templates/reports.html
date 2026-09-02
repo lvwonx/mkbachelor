@@ -1,0 +1,237 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Atskaites un analīzes vizualizācija</h1>
+
+	<div class="card">
+		<div class="report-generator">
+
+			<div>
+				<h3>Izveidot atskaiti</h3>
+
+				<p class="report-generator-description">
+					Izvēlieties atskaites veidu un ģenerējiet aktuālu
+					kiberdrošības stāvokļa pārskatu.
+				</p>
+			</div>
+
+			<div class="report-generator-controls">
+
+				<select id="reportType">
+					<option value="full">
+						Pilns kiberdrošības pārskats
+					</option>
+
+					<option value="risks">
+						Risku pārskats
+					</option>
+
+					<option value="incidents">
+						Incidentu pārskats
+					</option>
+
+					<option value="assessment">
+						Pašnovērtējuma pārskats
+					</option>
+				</select>
+
+				<button
+					type="button"
+					id="generateReportButton"
+					class="btn-primary"
+				>
+					Ģenerēt atskaiti
+				</button>
+
+			</div>
+
+		</div>
+
+		<div
+			id="generatedReport"
+			class="generated-report"
+			hidden
+		></div>
+		
+		<div
+			id="reportExportActions"
+			class="report-export-actions"
+			style="display: none;"
+		>
+			<button
+				type="button"
+				id="exportReportPdf"
+				class="btn-primary"
+			>
+				Eksportēt PDF
+			</button>
+
+			<button
+				type="button"
+				id="exportReportExcel"
+				class="btn-primary"
+			>
+				Eksportēt Excel
+			</button>
+		</div>
+	</div>
+
+	<div class="card">
+
+		<h3>Analīzes vizualizācija</h3>
+
+    <div class="report-summary">
+
+		<div class="report-stat">
+			<span class="report-stat-label">
+				Sistēmas
+			</span>
+
+			<strong
+				id="reportSystemsCount"
+				class="report-stat-value"
+			>
+				—
+			</strong>
+		</div>
+
+
+		<div class="report-stat">
+			<span class="report-stat-label">
+				Riski
+			</span>
+
+			<strong
+				id="reportRisksCount"
+				class="report-stat-value"
+			>
+				—
+			</strong>
+
+			<span
+				id="reportRisksActive"
+				class="report-stat-secondary"
+			>
+				Aktīvi: —
+			</span>
+		</div>
+
+
+		<div class="report-stat">
+			<span class="report-stat-label">
+				Incidenti
+			</span>
+
+			<strong
+				id="reportIncidentsCount"
+				class="report-stat-value"
+			>
+				—
+			</strong>
+
+			<span
+				id="reportIncidentsUnresolved"
+				class="report-stat-secondary"
+			>
+				Neatrisināti: —
+			</span>
+		</div>
+
+
+		<div class="report-stat">
+			<span class="report-stat-label">
+				Nepārtrauktības plāni
+			</span>
+
+			<strong
+				id="reportContinuityCount"
+				class="report-stat-value"
+			>
+				—
+			</strong>
+		</div>
+
+
+		<div class="report-stat">
+			<span class="report-stat-label">
+				Pēdējais pašnovērtējums
+			</span>
+
+			<strong
+				id="reportAssessmentScore"
+				class="report-stat-value"
+			>
+				—
+			</strong>
+
+			<span
+				id="reportAssessmentLevel"
+				class="report-stat-secondary"
+			>
+				—
+			</span>
+		</div>
+
+	</div>
+	
+	<div class="reports-charts">
+
+		<div class="report-chart-card">
+
+			<h3>Risku sadalījums</h3>
+
+			<div class="report-chart">
+				<canvas id="reportRisksChart"></canvas>
+			</div>
+
+		</div>
+
+
+		<div class="report-chart-card">
+
+			<h3>Incidentu sadalījums</h3>
+
+			<div class="report-chart">
+				<canvas id="reportIncidentsChart"></canvas>
+			</div>
+
+		</div>
+
+	</div>
+	
+	<div class="report-chart-card report-chart-wide">
+
+		<h3>Risku izveides dinamika</h3>
+
+		<div class="report-chart">
+			<canvas id="reportRiskDynamicsChart"></canvas>
+		</div>
+
+	</div>
+	
+	<div class="report-chart-card report-chart-wide">
+
+		<h3>Pašnovērtējuma dinamika</h3>
+
+		<div class="report-chart">
+			<canvas id="reportAssessmentDynamicsChart"></canvas>
+		</div>
+
+	</div>
+	
+	<div class="assessment-focus-section">
+
+        <h3>Jomas, kurām nepieciešama uzmanība</h3>
+
+        <div id="assessmentFocus">
+            Ielādē...
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+
+{% endblock %}

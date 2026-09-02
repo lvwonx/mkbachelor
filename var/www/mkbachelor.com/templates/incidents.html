@@ -1,0 +1,219 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Kiberdrošības incidentu pārvaldība</h1>
+
+<div class="card">
+
+    <h3 id="incidentFormTitle">Pievienot incidentu</h3>
+
+    <form id="incidentForm">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Nosaukums"
+            required
+        >
+
+        <textarea
+            id="description"
+            placeholder="Apraksts"
+        ></textarea>
+
+        <select id="system_id" required>
+
+            <option
+                value=""
+                disabled
+                selected
+                hidden
+            >
+                Sistēma
+            </option>
+
+        </select>
+
+        <div class="form-group">
+
+			<div
+				id="riskSelect"
+				class="multi-select"
+			>
+
+				<div
+					class="multi-select-placeholder"
+					id="riskSelectPlaceholder"
+				>
+					Izvēlieties riskus
+				</div>
+
+
+				<div
+					class="multi-select-options"
+					id="riskSelectOptions"
+				></div>
+
+			</div>
+
+		</div>
+
+        <select id="severity" required>
+
+            <option
+                value=""
+                disabled
+                selected
+                hidden
+            >
+                Kritiskums
+            </option>
+
+            <option value="low">
+                Low
+            </option>
+
+            <option value="medium">
+                Medium
+            </option>
+
+            <option value="high">
+                High
+            </option>
+
+        </select>
+
+        <select id="status" required>
+
+            <option value="open">
+                Open
+            </option>
+
+            <option value="in_progress">
+                In Progress
+            </option>
+
+            <option value="resolved">
+                Resolved
+            </option>
+
+        </select>
+
+        <div class="form-row">
+
+            <button
+                type="submit"
+                id="submitBtn"
+            >
+                Pievienot
+            </button>
+
+            <button
+                type="button"
+                onclick="cancelEdit()"
+                id="cancelBtn"
+                style="display:none;"
+            >
+                Atcelt
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<div class="card">
+
+    <h3>Incidentu saraksts</h3>
+
+	<div class="list-controls">
+
+		<div class="search-box">
+
+			<input
+				type="text"
+				id="incidentSearch"
+				placeholder="Meklēt incidentu..."
+			>
+
+		</div>
+
+
+		<div class="per-page-box">
+
+			<label for="incidentPerPage">
+				Rādīt:
+			</label>
+
+			<select id="incidentPerPage">
+
+				<option value="5" selected>
+					5
+				</option>
+
+				<option value="10">
+					10
+				</option>
+
+				<option value="20">
+					20
+				</option>
+
+				<option value="50">
+					50
+				</option>
+
+			</select>
+
+		</div>
+
+	</div>
+
+    <table class="incident-table">
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Nosaukums</th>
+                <th>Sistēma</th>
+                <th>Risks</th>
+                <th>Kritiskums</th>
+                <th>Statuss</th>
+                <th>Izveidots</th>
+                <th>Izveidoja</th>
+                <th>Darbības</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="incidentTable"></tbody>
+
+    </table>
+	
+	<div class="list-footer">
+
+		<div
+			id="incidentPaginationInfo"
+			class="pagination-info"
+		>
+			Rādīti 0–0 no 0
+		</div>
+
+
+		<div
+			id="incidentPagination"
+			class="pagination"
+		></div>
+
+	</div>
+
+</div>
+
+
+<script src="/static/js/incidents.js"></script>
+
+{% endblock %}
